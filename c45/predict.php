@@ -28,7 +28,6 @@ define("B", "B");
 
 function predict($query, $tree, $default = 1)
 {
-  pprint($query);
   $query_keys = array_keys($query);
   $tree_keys = array_keys($tree);
   $result = null;
@@ -75,8 +74,9 @@ $test = [
 $t2 = array_combine(array_keys($test), [B, T, B, T, B, T, T, T, T, T, T, T, T, T, T, T, T, T, T, B, T]); // harusnya bernilai D3
 $t3 = array_combine(array_keys($test), [T, B, T, T, T, T, T, B, T, T, T, T, T, B, T, T, T, T, T, T, T]); // harusnya bernilai D1
 $t4 = array_combine(array_keys($test), [T, T, T, B, T, T, T, T, T, T, B, T, T, T, T, T, B, T, T, T, T]); // harusnya bernilai D4
+$t5 = array_combine(array_keys($test), [T, T, B, T, T, T, T, T, T, T, T, T, T, T, T, T, T, B, T, T, T,]); // harusnya bernilai D2
 // $predictions = predict($test, $tree);
-// $predictions = predict($t4, $tree);
-// // pprint($predictions);
+$predictions = predict($t5, $tree);
+pprint($predictions);
 // tree_print($tree);
 // pprint($tree);
