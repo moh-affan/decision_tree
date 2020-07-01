@@ -115,12 +115,6 @@ function c45($data, $origin, $features, $target_attribute_name = 'hasil', $paren
   }
 }
 
-function trimming($tree)
-{
-  $new_tree = [];
-  foreach ($tree as $t) {
-  }
-}
 
 function predict($query, $tree, $default = 1)
 {
@@ -150,6 +144,9 @@ function train_test_split($data)
 define("T", "T");
 define("B", "B");
 $tree = c45($dataset, $dataset, $g_features);
-pprint($tree);
+// pprint($tree);
 file_put_contents('tree.data', serialize($tree));
 file_put_contents('tree.json', json_encode($tree));
+require_once 'pruning.php';
+$new = pruning($tree);
+file_put_contents('tree-prunned.json', json_encode($new));
